@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-horizontal',
@@ -26,7 +25,4 @@ export class HorizontalComponent {
       }
     },
   };
-
-  // @ts-ignore
-  chart = new Chart("myChart", this.config);
 }
