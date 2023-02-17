@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
+@media (max-width: 599.98px) {
+  .display_on_tablet {
+    display: none;
+  }
+
+  .display_on_laptop {
+    display: none;
+  }
+}
+@media (min-width: 600px) and (max-width: 959.98px) {
+  .display_on_mobile {
+    display: none;
+  }
+
+  .display_on_laptop {
+    display: none;
+  }
+}
+@media (min-width: 960px) and (max-width: 1279.98px) {
+  .display_on_mobile {
+    display: none;
+  }
+
+  .display_on_tablet {
+    display: none;
+  }
+}
+@media (min-width: 1280px) and (max-width: 1919.98px) {
+  .display_on_mobile {
+    display: none;
+  }
+
+  .display_on_tablet {
+    display: none;
+  }
+}
+@media (min-width: 1920px) {
+  .display_on_mobile {
+    display: none;
+  }
+
+  .display_on_tablet {
+    display: none;
+  }
+}
