@@ -29,10 +29,20 @@ export class HorizontalComponent {
   public barChartPlugins = [];
 
   public barChartData: ChartData<'bar'> = {
-    labels: [ '2006', '2007', '2008', '2009', '2010', '2011', '2012' ],
+    labels: [ '2006', '2007', '2008', '2009', '2010', '2011' ],
     datasets: [
-      { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'Series A' },
-      { data: [ 28, 48, 40, 19, 86, 27, 90 ], label: 'Series B' }
+      {
+        data: [ 65, 59, 80, 81, 56, 55 ],
+        label: 'Series A',
+        backgroundColor: [
+          'rgba(135, 137, 171, 1)',
+          'rgba(254, 209, 207, 1)',
+          'rgba(253, 215, 131, 1)',
+          'rgba(128, 207, 207, 1)',
+          'rgba(128, 191, 167, 1)',
+          'rgba(238, 129, 129, 1)'
+        ],
+      },
     ]
   };
 
