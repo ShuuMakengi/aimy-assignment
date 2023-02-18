@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+@include mat.core();
+@import "colour-palettes";
+
+$aimy-purple: '#101357';
+$aimy-green: '#80BFA7';
+$aimy-red: '#EE8181';
+
+$my-app-primary: mat.define-palette($md-aimypurple);
+$my-app-accent:  mat.define-palette($md-aimygreen);
+$my-app-warn:    mat.define-palette($md-aimyred);
+$my-app-theme:   mat.define-light-theme((
+  color: (
+    primary: $my-app-primary,
+    accent: $my-app-accent,
+    warn: $my-app-warn,
+  )
+));
+
+@include mat.all-component-themes($my-app-theme);
