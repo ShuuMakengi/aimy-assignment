@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChartsService } from './charts.service';
 import { ChartData } from 'chart.js';
 
@@ -8,6 +8,8 @@ import { ChartData } from 'chart.js';
   styleUrls: ['./charts.component.scss']
 })
 export class ChartsComponent implements OnInit {
+  @Input()
+  title: string = '';
 
   barChartData: ChartData<'bar'> | undefined;
 
@@ -21,6 +23,7 @@ export class ChartsComponent implements OnInit {
         {
           data: [ 65, 59, 80, 81, 56, 55 ],
           backgroundColor: backgroundColours,
+          maxBarThickness: 125,
         },
       ]
     };

@@ -13,5 +13,8 @@ export class VerticalComponent extends BarChartDirective {
       this.barChartOptions.indexAxis = 'y';
       this.barChartOptions.aspectRatio = 1.5;
     }
+    if (this.chartData?.datasets?.length) {
+      this.chartData.datasets[0].maxBarThickness = 40;
+    }
   }
 }

@@ -1,6 +1,8 @@
 <div class="chart-card" fxHide.gt-sm>
+  <h2>{{ title }}</h2>
   <app-vertical [chartData]="barChartData"></app-vertical>
 </div>
 <div class="chart-card" fxHide.lt-md>
+  <h2>{{ title }}</h2>
   <app-horizontal [chartData]="barChartData"></app-horizontal>
 </div>
