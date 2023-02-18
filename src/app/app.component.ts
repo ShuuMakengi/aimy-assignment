@@ -34,7 +34,7 @@ export class AppComponent {
 
   employeeFilter: string | undefined;
 
-  sort: string | undefined;
+  sort = 'Euro (€)';
 
   payments: PaymentModel[];
 
@@ -44,11 +44,12 @@ export class AppComponent {
     this.parseChartTwoData();
   }
 
-  private parseChartOneData(): void {
+  parseChartOneData(): void {
     const dataByMethod = new Map<string, number>();
 
     for(const payment of this.payments) {
-      dataByMethod.set(payment.method, (dataByMethod.get(payment.method) || 0) + payment.amount);
+      const toAdd = this.sort == 'Euro (€)' ? payment.amount : 1;
+      dataByMethod.set(payment.method, (dataByMethod.get(payment.method) || 0) + toAdd);
     }
 
     this.chartOneLabels.chartLabels = [...dataByMethod.keys()];
@@ -56,7 +57,7 @@ export class AppComponent {
     this.chartOneData = [...dataByMethod.values()];
   }
 
-  private parseChartTwoData(): void {
+  parseChartTwoData(): void {
     const dataByStatus = new Map<string, number>();
 
     for(const payment of this.payments) {

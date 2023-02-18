@@ -13,7 +13,12 @@ export class ChartsComponent implements OnInit {
   labels!: ChartLabelsModel;
 
   @Input()
-  dataset!: number[];
+  set dataset(dataset: number[]) {
+    this._dataset = dataset;
+    this.initChartData();
+  }
+
+  _dataset!: number[];
 
   barChartData: ChartData<'bar'> | undefined;
 
@@ -23,12 +28,16 @@ export class ChartsComponent implements OnInit {
   constructor(private chartsService: ChartsService) {}
 
   ngOnInit(): void {
+    this.initChartData();
+  }
+
+  initChartData(): void {
     const backgroundColours = this.chartsService.getChartColours();
     this.barChartData = {
       labels: this.labels.chartLabels,
       datasets: [
         {
-          data: this.dataset,
+          data: this._dataset,
           backgroundColor: backgroundColours,
           maxBarThickness: 125,
         },

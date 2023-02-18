@@ -6,7 +6,6 @@ import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
   selector: '[appBarChart]'
 })
 export class BarChartDirective {
-
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   barChartOptions: ChartConfiguration['options'] = {
@@ -27,8 +26,16 @@ export class BarChartDirective {
   barChartType: ChartType = 'bar';
   barChartPlugins = [];
 
-  @Input()
-  chartData: ChartData<'bar'> | undefined;
+  @Input('chartData')
+  set chartData(chartData: ChartData<'bar'> | undefined) {
+    if (!chartData) {
+      return;
+    }
+    this._chartData = chartData;
+    this.updateChart();
+  }
+
+  _chartData: ChartData<'bar'> | undefined;
 
   // events
   public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
@@ -39,20 +46,7 @@ export class BarChartDirective {
     console.log(event, active);
   }
 
-  public randomize(): void {
-    if (!this.chartData) {
-      return;
-    }
-    // Only Change 3 values
-    this.chartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40 ];
-
+  public updateChart(): void {
     this.chart?.update();
   }
 

@@ -16,7 +16,7 @@
         this is the transparent part
       </div>
       <div fxLayout="column">
-        <app-charts [labels]="chartOneLabels" [dataset]="chartOneData"></app-charts>
+        <app-charts [labels]="chartOneLabels" [dataset]="chartOneData" (sortChanged)="sort = $event; this.parseChartOneData()"></app-charts>
         <app-charts [labels]="chartTwoLabels" [dataset]="chartTwoData"></app-charts>
       </div>
     </div>

@@ -10,7 +10,7 @@ export class PaymentService {
 
   public getPayments(): PaymentModel[] {
     const result: PaymentModel[] = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 50; i++) {
       result.push(PaymentService.generatePaymentModel());
     }
     return result;
@@ -18,7 +18,7 @@ export class PaymentService {
 
   private static generatePaymentModel(): PaymentModel {
     return {
-      amount: Math.random() * 5000,
+      amount: Math.random() * 500,
       date: PaymentService.getRandomDate(),
       employee: PaymentService.getRandomEmployee(),
       status: this.getRandomStatus(),
