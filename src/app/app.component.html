@@ -13,7 +13,17 @@
     </div>
     <div class="page-content" fxFill fxFlex="90" fxLayout="column">
       <div class="filter-row" fxLayout="row" fxHide.lt-md>
-        this is the transparent part
+        <mat-form-field appearance="fill">
+          <mat-label>Employee</mat-label>
+          <mat-select (selectionChange)="employeeFilter = $event.value; employeeFilterChanged()">
+            <mat-option [value]="undefined">
+               All
+            </mat-option>
+            <mat-option *ngFor="let employee of employees" [value]="employee">
+              {{ employee }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
       <div fxLayout="column">
         <app-charts [labels]="chartOneLabels" [dataset]="chartOneData" (sortChanged)="sort = $event; this.parseChartOneData()"></app-charts>

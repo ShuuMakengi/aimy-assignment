@@ -32,14 +32,20 @@ export class AppComponent {
 
   dateFilter = new Date();
 
+  employees: Set<string>;
+
   employeeFilter: string | undefined;
 
   sort = 'Euro (€)';
 
   payments: PaymentModel[];
 
+  filteredPayments: PaymentModel[];
+
   constructor(private paymentService: PaymentService) {
     this.payments = this.paymentService.getPayments();
+    this.filteredPayments = [...this.payments];
+    this.employees = new Set(this.filteredPayments.map(payment => payment.employee));
     this.parseChartOneData();
     this.parseChartTwoData();
   }
@@ -47,7 +53,7 @@ export class AppComponent {
   parseChartOneData(): void {
     const dataByMethod = new Map<string, number>();
 
-    for(const payment of this.payments) {
+    for(const payment of this.filteredPayments) {
       const toAdd = this.sort == 'Euro (€)' ? payment.amount : 1;
       dataByMethod.set(payment.method, (dataByMethod.get(payment.method) || 0) + toAdd);
     }
@@ -60,12 +66,23 @@ export class AppComponent {
   parseChartTwoData(): void {
     const dataByStatus = new Map<string, number>();
 
-    for(const payment of this.payments) {
+    for(const payment of this.filteredPayments) {
       dataByStatus.set(payment.status, (dataByStatus.get(payment.status) || 0) + 1);
     }
 
     this.chartTwoLabels.chartLabels = [...dataByStatus.keys()];
 
     this.chartTwoData = [...dataByStatus.values()];
+  }
+
+  employeeFilterChanged(): void {
+    if (this.employeeFilter) {
+      this.filteredPayments = this.payments.filter(payment => payment.employee == this.employeeFilter);
+    } else {
+      this.filteredPayments = [...this.payments];
+    }
+
+    this.parseChartOneData();
+    this.parseChartTwoData();
   }
 }
