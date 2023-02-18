@@ -19,10 +19,10 @@ export class PaymentService {
   private static generatePaymentModel(): PaymentModel {
     return {
       amount: Math.random() * 5000,
-      currency: PaymentService.getRandomCurrency(),
       date: PaymentService.getRandomDate(),
       employee: PaymentService.getRandomEmployee(),
       status: this.getRandomStatus(),
+      method: this.getRandomMethod(),
     };
   }
 
@@ -36,17 +36,6 @@ export class PaymentService {
     const random = Math.floor(Math.random() * employees.length);
 
     return employees[random];
-  }
-
-  private static getRandomCurrency(): 'euro' | 'pound' | 'forint' {
-    const random = Math.random();
-    if (random > 0.3) {
-      return 'euro';
-    }
-    if (random > 0.1) {
-      return 'pound'
-    }
-    return 'forint';
   }
 
   private static getRandomStatus(): 'Betaald' | 'Open' | 'In proces' | 'Verzoek gestuurd' | 'Terugstorting' {
@@ -64,5 +53,25 @@ export class PaymentService {
       return 'Verzoek gestuurd'
     }
     return 'Terugstorting';
+  }
+
+  private static getRandomMethod(): 'Pin' | 'Credit-Card' | 'Betaalverzoek' | 'iDeal' | 'Apple Pay' | 'Abonnement' {
+    const random = Math.random();
+    if (random > 0.7) {
+      return 'Pin';
+    }
+    if (random > 0.5) {
+      return 'iDeal'
+    }
+    if (random > 0.4) {
+      return 'Abonnement';
+    }
+    if (random > 0.3) {
+      return 'Betaalverzoek'
+    }
+    if (random > 0.2) {
+      return 'Credit-Card';
+    }
+    return 'Apple Pay';
   }
 }

@@ -2,6 +2,6 @@ export interface PaymentModel {
   employee: string;
   date: Date;
   amount: number;
-  currency: 'euro' | 'pound' | 'forint';
   status: 'Betaald' | 'Open' | 'In proces' | 'Verzoek gestuurd' | 'Terugstorting';
+  method: 'Pin' | 'Credit-Card' | 'Betaalverzoek' | 'iDeal' | 'Apple Pay' | 'Abonnement';
 }
