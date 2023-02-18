@@ -1,12 +1,15 @@
 <div fxFlexFill fxLayout="row" style="height: 100%">
   <div class="white-box nav-menu" style="width: 50px; height: 100%" fxLayout="column" fxHide.lt-md>
-    <button mat-icon-button *ngFor="let icon of navIcons">
+    <button color="primary" mat-icon-button *ngFor="let icon of navIcons">
       <mat-icon>{{ icon }}</mat-icon>
     </button>
   </div>
   <div class="outline" fxFill fxFlex="" fxLayout="column">
-    <div class="white-box header" fxFill fxFlex="10" fxHide.lt-md>
-      <h2>Reporting/Aimy Payments</h2>
+    <div class="white-box header" fxFill fxFlex="10" fxHide.lt-md fxLayoutAlign="start center">
+      <h2>
+        <span class="grey-text">Reporting / </span>
+        Aimy Payments
+      </h2>
     </div>
     <div class="page-content" fxFill fxFlex="90" fxLayout="column">
       <div class="filter-row" fxLayout="row" fxHide.lt-md>
