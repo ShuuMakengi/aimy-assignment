@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 
@@ -28,23 +28,8 @@ export class HorizontalComponent {
   public barChartType: ChartType = 'bar';
   public barChartPlugins = [];
 
-  public barChartData: ChartData<'bar'> = {
-    labels: [ '2006', '2007', '2008', '2009', '2010', '2011' ],
-    datasets: [
-      {
-        data: [ 65, 59, 80, 81, 56, 55 ],
-        label: 'Series A',
-        backgroundColor: [
-          'rgba(135, 137, 171, 1)',
-          'rgba(254, 209, 207, 1)',
-          'rgba(253, 215, 131, 1)',
-          'rgba(128, 207, 207, 1)',
-          'rgba(128, 191, 167, 1)',
-          'rgba(238, 129, 129, 1)'
-        ],
-      },
-    ]
-  };
+  @Input()
+  chartData: ChartData<'bar'> | undefined;
 
   // events
   public chartClicked({ event, active }: { event?: ChartEvent, active?: {}[] }): void {
@@ -56,8 +41,11 @@ export class HorizontalComponent {
   }
 
   public randomize(): void {
+    if (!this.chartData) {
+      return;
+    }
     // Only Change 3 values
-    this.barChartData.datasets[0].data = [
+    this.chartData.datasets[0].data = [
       Math.round(Math.random() * 100),
       59,
       80,
