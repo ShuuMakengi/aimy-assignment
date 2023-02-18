@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ChartLabelsModel } from './charts/model/chart-labels.model';
+import { PaymentService } from './payment/payment.service';
 
 @Component({
   selector: 'app-root',
@@ -21,4 +22,13 @@ export class AppComponent {
     title: 'Factuurstatus',
     toggleButtons: []
   };
+
+  dateFilter = new Date();
+
+  employeeFilter: string | undefined;
+
+  currencyFilter: string | undefined;
+
+  constructor(private paymentService: PaymentService) {
+  }
 }
