@@ -1,1 +1,19 @@
-<app-charts></app-charts>
+<div fxFlexFill fxLayout="row" style="height: 100%">
+  <div class="outline" style="width: 50px" fxLayout="column" fxHide.lt-md>
+    this is the navbar
+  </div>
+  <div class="outline" fxFill fxFlex="" fxLayout="column">
+    <div class="outline" fxFill fxFlex="10" fxHide.lt-md>
+      this is the header
+    </div>
+    <div class="outline" fxFill fxFlex="90" fxLayout="column">
+      <div class="outline" fxLayout="row" fxHide.lt-md>
+        this is the transparent part
+      </div>
+      <div class="outline" fxLayout="column">
+        <app-charts></app-charts>
+        <app-charts></app-charts>
+      </div>
+    </div>
+  </div>
+</div>

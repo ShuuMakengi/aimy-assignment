@@ -5,6 +5,7 @@ import { HorizontalComponent } from './horizontal/horizontal.component';
 import { ChartsComponent } from './charts.component';
 import { NgChartsConfiguration, NgChartsModule } from 'ng2-charts';
 import { BarChartDirective } from './bar-chart.directive';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BarChartDirective } from './bar-chart.directive';
   ],
   imports: [
     CommonModule,
-    NgChartsModule
+    NgChartsModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: NgChartsConfiguration, useValue: { generateColors: false }}
