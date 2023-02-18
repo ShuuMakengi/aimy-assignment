@@ -1,18 +1,20 @@
 <div fxFlexFill fxLayout="row" style="height: 100%">
-  <div class="white-box nav-menu" style="width: 50px" fxLayout="column" fxHide.lt-md>
-    this is the navbar
+  <div class="white-box nav-menu" style="width: 50px; height: 100%" fxLayout="column" fxHide.lt-md>
+    <button mat-icon-button *ngFor="let icon of navIcons">
+      <mat-icon>{{ icon }}</mat-icon>
+    </button>
   </div>
   <div class="outline" fxFill fxFlex="" fxLayout="column">
     <div class="white-box header" fxFill fxFlex="10" fxHide.lt-md>
-      this is the header
+      <h2>Reporting/Aimy Payments</h2>
     </div>
     <div class="page-content" fxFill fxFlex="90" fxLayout="column">
       <div class="filter-row" fxLayout="row" fxHide.lt-md>
         this is the transparent part
       </div>
       <div fxLayout="column">
-        <app-charts title="Overzicht per betaalmethode"></app-charts>
-        <app-charts title="Factuurstatus"></app-charts>
+        <app-charts [labels]="chartOne"></app-charts>
+        <app-charts [labels]="chartTwo"></app-charts>
       </div>
     </div>
   </div>

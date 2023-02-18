@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ChartLabelsModel } from './charts/model/chart-labels.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'aimy-assignment';
+  navIcons = ['pregnant_woman', 'pregnant_woman', 'pregnant_woman',
+    'pregnant_woman', 'pregnant_woman', 'pregnant_woman', 'pregnant_woman', 'pregnant_woman'];
+
+  chartOne: ChartLabelsModel = {
+    bottomText: 'Betaalmethoden',
+    title: 'Overzicht per betaalmethode',
+    toggleButtons: ['Euro (€)', 'Aantal']
+  };
+
+  chartTwo: ChartLabelsModel = {
+    bottomText: 'Status',
+    title: 'Factuurstatus',
+    toggleButtons: []
+  };
 }

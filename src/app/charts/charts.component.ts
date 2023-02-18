@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ChartsService } from './charts.service';
 import { ChartData } from 'chart.js';
+import { ChartLabelsModel } from './model/chart-labels.model';
 
 @Component({
   selector: 'app-charts',
@@ -9,7 +10,7 @@ import { ChartData } from 'chart.js';
 })
 export class ChartsComponent implements OnInit {
   @Input()
-  title: string = '';
+  labels!: ChartLabelsModel;
 
   barChartData: ChartData<'bar'> | undefined;
 

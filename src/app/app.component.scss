@@ -5,6 +5,11 @@
 
 .nav-menu {
   border-right: 1px solid;
+  & button {
+    & mat-icon {
+      color: rgba(16, 19, 87, 1);
+    }
+  }
 }
 
 .header {

@@ -6,6 +6,7 @@ import { ChartsComponent } from './charts.component';
 import { NgChartsConfiguration, NgChartsModule } from 'ng2-charts';
 import { BarChartDirective } from './bar-chart.directive';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     CommonModule,
     NgChartsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatButtonToggleModule
   ],
   providers: [
     { provide: NgChartsConfiguration, useValue: { generateColors: false }}

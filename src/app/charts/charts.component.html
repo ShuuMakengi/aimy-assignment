@@ -1,8 +1,12 @@
 <div class="chart-card" fxHide.gt-sm>
-  <h2>{{ title }}</h2>
+  <h2>{{ labels.title }}</h2>
   <app-vertical [chartData]="barChartData"></app-vertical>
 </div>
 <div class="chart-card" fxHide.lt-md>
-  <h2>{{ title }}</h2>
+  <h2>{{ labels.title }}</h2>
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle *ngFor="let label of labels.toggleButtons; let i" value="{{i}}">{{ label }}</mat-button-toggle>
+  </mat-button-toggle-group>
   <app-horizontal [chartData]="barChartData"></app-horizontal>
+  <h3>{{ labels.bottomText }}</h3>
 </div>
