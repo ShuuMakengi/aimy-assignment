@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
+import { BarChartDirective } from '../bar-chart.directive';
 
 @Component({
   selector: 'app-vertical',
   templateUrl: './vertical.component.html',
   styleUrls: ['./vertical.component.scss']
 })
-export class VerticalComponent {
-
+export class VerticalComponent extends BarChartDirective {
+  constructor() {
+    super();
+    if (this.barChartOptions) {
+      this.barChartOptions.indexAxis = 'y';
+    }
+  }
 }

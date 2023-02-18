@@ -4,14 +4,14 @@ import { VerticalComponent } from './vertical/vertical.component';
 import { HorizontalComponent } from './horizontal/horizontal.component';
 import { ChartsComponent } from './charts.component';
 import { NgChartsConfiguration, NgChartsModule } from 'ng2-charts';
-
-
+import { BarChartDirective } from './bar-chart.directive';
 
 @NgModule({
   declarations: [
     VerticalComponent,
     HorizontalComponent,
-    ChartsComponent
+    ChartsComponent,
+    BarChartDirective
   ],
   exports: [
     ChartsComponent
