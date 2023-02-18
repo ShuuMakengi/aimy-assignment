@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ChartLabelsModel } from './charts/model/chart-labels.model';
 import { PaymentService } from './payment/payment.service';
-import { PaymentModel } from './payment/model/payment.model';
+import { PaymentMethod, PaymentModel, PaymentStatus } from './payment/model/payment.model';
 
 @Component({
   selector: 'app-root',
@@ -53,24 +53,33 @@ export class AppComponent {
   parseChartOneData(): void {
     const dataByMethod = new Map<string, number>();
 
-    for(const payment of this.filteredPayments) {
-      const toAdd = this.sort == 'Euro (€)' ? payment.amount : 1;
-      dataByMethod.set(payment.method, (dataByMethod.get(payment.method) || 0) + toAdd);
+    for (const status of Object.values(PaymentMethod)) {
+      dataByMethod.set(status, 0);
     }
 
-    this.chartOneLabels.chartLabels = [...dataByMethod.keys()];
+    for(const payment of this.filteredPayments) {
+      const toAdd = this.sort == 'Euro (€)' ? payment.amount : 1;
+      // @ts-ignore
+      dataByMethod.set(payment.method, dataByMethod.get(payment.method.toString()) + toAdd);
+    }
+
+    this.chartOneLabels.chartLabels = Object.values(PaymentMethod);
 
     this.chartOneData = [...dataByMethod.values()];
   }
 
   parseChartTwoData(): void {
     const dataByStatus = new Map<string, number>();
-
-    for(const payment of this.filteredPayments) {
-      dataByStatus.set(payment.status, (dataByStatus.get(payment.status) || 0) + 1);
+    for (const status of Object.values(PaymentStatus)) {
+      dataByStatus.set(status, 0);
     }
 
-    this.chartTwoLabels.chartLabels = [...dataByStatus.keys()];
+    for(const payment of this.filteredPayments) {
+      // @ts-ignore
+      dataByStatus.set(payment.status, dataByStatus.get(payment.status.toString()) + 1);
+    }
+
+    this.chartTwoLabels.chartLabels = Object.values(PaymentStatus);
 
     this.chartTwoData = [...dataByStatus.values()];
   }

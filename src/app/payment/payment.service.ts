@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PaymentModel } from './model/payment.model';
+import { PaymentMethod, PaymentModel, PaymentStatus } from './model/payment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,40 +38,40 @@ export class PaymentService {
     return employees[random];
   }
 
-  private static getRandomStatus(): 'Betaald' | 'Open' | 'In proces' | 'Verzoek gestuurd' | 'Terugstorting' {
+  private static getRandomStatus(): PaymentStatus {
     const random = Math.random();
     if (random > 0.6) {
-      return 'Betaald';
+      return PaymentStatus.BETAALD;
     }
     if (random > 0.5) {
-      return 'Open'
+      return PaymentStatus.OPEN;
     }
     if (random > 0.4) {
-      return 'In proces';
+      return PaymentStatus.IN_PROCES;
     }
     if (random > 0.3) {
-      return 'Verzoek gestuurd'
+      return PaymentStatus.VERZOEK_GESTUURD;
     }
-    return 'Terugstorting';
+    return PaymentStatus.TERUGSTORTING;
   }
 
-  private static getRandomMethod(): 'Pin' | 'Credit-Card' | 'Betaalverzoek' | 'iDeal' | 'Apple Pay' | 'Abonnement' {
+  private static getRandomMethod(): PaymentMethod {
     const random = Math.random();
     if (random > 0.7) {
-      return 'Pin';
+      return PaymentMethod.PIN;
     }
     if (random > 0.5) {
-      return 'iDeal'
+      return PaymentMethod.IDEAL;
     }
     if (random > 0.4) {
-      return 'Abonnement';
+      return PaymentMethod.ABONNEMENT;
     }
     if (random > 0.3) {
-      return 'Betaalverzoek'
+      return PaymentMethod.BETAALVERZOEK;
     }
     if (random > 0.2) {
-      return 'Credit-Card';
+      return PaymentMethod.CREDITCARD;
     }
-    return 'Apple Pay';
+    return PaymentMethod.APPLE_PAY;
   }
 }
