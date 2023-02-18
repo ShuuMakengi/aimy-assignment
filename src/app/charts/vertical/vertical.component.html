@@ -1,4 +1,4 @@
-<div class="chart" fxHide.gt-sm>
+<div>
   <canvas baseChart class="chart" *ngIf="chartData"
           [data]="chartData"
           [options]="barChartOptions"
@@ -7,6 +7,4 @@
           (chartHover)="chartHovered($event)"
           (chartClick)="chartClicked($event)">
   </canvas>
-
-  <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
 </div>

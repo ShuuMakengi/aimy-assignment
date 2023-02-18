@@ -1,3 +1,22 @@
-.outline {
-  border: deeppink 2px solid;
+.white-box {
+  background: #FFFFFF;
+  border-color: rgba(233, 233, 233, 1);
+}
+
+.nav-menu {
+  border-right: 1px solid;
+}
+
+.header {
+  border-bottom: 1px solid;
+  height: 80px;
+}
+
+.page-content {
+  background-color: rgb(238, 238, 238);
+  padding: 12px;
+}
+
+.filter-row {
+  background-color: transparent;
 }

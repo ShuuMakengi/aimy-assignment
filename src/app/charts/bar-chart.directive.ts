@@ -18,10 +18,11 @@ export class BarChartDirective {
     },
     plugins: {
       legend: {
-        display: true,
+        display: false,
       },
     },
     indexAxis: 'x',
+    aspectRatio: 4,
   };
   barChartType: ChartType = 'bar';
   barChartPlugins = [];

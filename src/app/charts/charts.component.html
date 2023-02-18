@@ -1,6 +1,6 @@
-<div class="display-on-mobile">
+<div class="chart-card" fxHide.gt-sm>
   <app-vertical [chartData]="barChartData"></app-vertical>
 </div>
-<div class="display-on-laptop">
+<div class="chart-card" fxHide.lt-md>
   <app-horizontal [chartData]="barChartData"></app-horizontal>
 </div>

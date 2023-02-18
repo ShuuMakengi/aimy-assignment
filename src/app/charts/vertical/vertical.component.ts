@@ -11,6 +11,7 @@ export class VerticalComponent extends BarChartDirective {
     super();
     if (this.barChartOptions) {
       this.barChartOptions.indexAxis = 'y';
+      this.barChartOptions.aspectRatio = 1.5;
     }
   }
 }
