@@ -39,7 +39,6 @@ export class BarChartDirective {
     this.chartDataVertical = JSON.parse(JSON.stringify(chartData));
 
     if (this.chartDataHorizontal?.datasets?.length) {
-      this.chartDataHorizontal.datasets[0].maxBarThickness = 40;
       this.chartDataHorizontal.datasets[0].datalabels = {
         anchor: 'end',
         align: 'top'
