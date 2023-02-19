@@ -9,8 +9,8 @@ import { PaymentMethod, PaymentModel, PaymentStatus } from './payment/model/paym
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  navIcons = ['pregnant_woman', 'pregnant_woman', 'pregnant_woman',
-    'pregnant_woman', 'pregnant_woman', 'pregnant_woman', 'pregnant_woman', 'pregnant_woman'];
+  navIcons = ['assistant_direction', 'roller_skating', 'real_estate_agent',
+    'grass', 'coffee_maker', 'heat_pump', 'fire_extinguisher', 'emergency_heat'];
 
   chartOneLabels: ChartLabelsModel = {
     bottomText: 'Betaalmethoden',
@@ -46,8 +46,7 @@ export class AppComponent {
     this.payments = this.paymentService.getPayments();
     this.filteredPayments = [...this.payments];
     this.employees = new Set(this.filteredPayments.map(payment => payment.employee));
-    this.parseChartOneData();
-    this.parseChartTwoData();
+    this.updateFilters();
   }
 
   parseChartOneData(): void {
@@ -84,14 +83,29 @@ export class AppComponent {
     this.chartTwoData = [...dataByStatus.values()];
   }
 
-  employeeFilterChanged(): void {
-    if (this.employeeFilter) {
-      this.filteredPayments = this.payments.filter(payment => payment.employee == this.employeeFilter);
+  updateFilters(): void {
+    if (!this.employeeFilter) {
+      this.filteredPayments = this.payments.filter(payment => AppComponent.dateEquals(payment.date, this.dateFilter));
     } else {
-      this.filteredPayments = [...this.payments];
+      this.filteredPayments = this.payments.filter(payment =>
+        payment.employee == this.employeeFilter && AppComponent.dateEquals(payment.date, this.dateFilter));
     }
 
     this.parseChartOneData();
     this.parseChartTwoData();
+  }
+
+  previousDay(): void {
+    this.dateFilter = new Date(this.dateFilter.setDate(this.dateFilter.getDate() - 1));
+    this.updateFilters();
+  }
+
+  nextDay(): void {
+    this.dateFilter = new Date(this.dateFilter.setDate(this.dateFilter.getDate() + 1));
+    this.updateFilters();
+  }
+
+  private static dateEquals(date1: Date, date2: Date): boolean {
+    return date1.getDate() == date2.getDate();
   }
 }
