@@ -1,7 +1,7 @@
 <div class="chart-card" fxHide.gt-sm>
   <h2>{{ labels.title }}</h2>
   <div>
-    <mat-button-toggle-group fxLayout="row" (valueChange)="sortChanged.emit($event)">
+    <mat-button-toggle-group fxLayout="row" (valueChange)="sortChanged.emit($event)" value="Euro (€)">
       <mat-button-toggle fxFlex *ngFor="let label of labels.toggleButtons; let i" value="{{i}}">
         {{ label }}
       </mat-button-toggle>
@@ -11,8 +11,10 @@
 </div>
 <div class="chart-card" fxHide.lt-md>
   <h2>{{ labels.title }}</h2>
-  <mat-button-toggle-group (valueChange)="sortChanged.emit($event)">
-    <mat-button-toggle *ngFor="let label of labels.toggleButtons; let i" value="{{i}}">{{ label }}</mat-button-toggle>
+  <mat-button-toggle-group (valueChange)="sortChanged.emit($event)" value="Euro (€)">
+    <mat-button-toggle *ngFor="let label of labels.toggleButtons; let i" value="{{i}}">
+      {{ label }}
+    </mat-button-toggle>
   </mat-button-toggle-group>
   <app-horizontal [chartData]="barChartData"></app-horizontal>
   <h3>{{ labels.bottomText }}</h3>
