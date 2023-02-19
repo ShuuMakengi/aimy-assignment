@@ -1,5 +1,12 @@
 <div class="chart-card" fxHide.gt-sm>
   <h2>{{ labels.title }}</h2>
+  <div>
+    <mat-button-toggle-group fxLayout="row" (valueChange)="sortChanged.emit($event)">
+      <mat-button-toggle fxFlex *ngFor="let label of labels.toggleButtons; let i" value="{{i}}">
+        {{ label }}
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
   <app-vertical [chartData]="barChartData"></app-vertical>
 </div>
 <div class="chart-card" fxHide.lt-md>

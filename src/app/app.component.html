@@ -11,17 +11,27 @@
         Aimy Payments
       </h2>
     </div>
+    <div class="white-box header" fxFill fxFlex="10" fxHide.gt-sm fxLayoutAlign="space-between center">
+      <h2>
+        Betaalingen
+      </h2>
+      <button color="primary" mat-icon-button (click)="showFilterRowMobile = !showFilterRowMobile">
+        <mat-icon>tune</mat-icon>
+      </button>
+    </div>
     <div class="page-content" fxFill fxFlex="90" fxLayout="column">
-      <div class="filter-row" fxLayout="row" fxHide.lt-md>
-        <div>
-          <mat-button-toggle-group>
-            <mat-button-toggle (click)="previousDay()">
+      <div class="filter-row" fxLayout="row"
+           [fxLayoutAlign.gt-sm]="'space-between center'"
+           [fxLayout.lt-md]="'column'" [fxHide.lt-md]="!showFilterRowMobile">
+        <div style="min-width: 400px; height: 50px; margin-bottom: 10px">
+          <mat-button-toggle-group fxFlex>
+            <mat-button-toggle fxFlex="15" (click)="previousDay()">
               <mat-icon>navigate_before</mat-icon>
             </mat-button-toggle>
-            <mat-button-toggle disabled style="color: black; width: 250px">
+            <mat-button-toggle fxFlex="70" disabled style="color: black">
               {{ dateFilter | date: 'EEEE, d MMMM y'}}
             </mat-button-toggle>
-            <mat-button-toggle (click)="nextDay()">
+            <mat-button-toggle fxFlex="15" (click)="nextDay()">
               <mat-icon>navigate_next</mat-icon>
             </mat-button-toggle>
           </mat-button-toggle-group>

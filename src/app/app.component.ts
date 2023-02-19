@@ -42,6 +42,8 @@ export class AppComponent {
 
   filteredPayments: PaymentModel[];
 
+  showFilterRowMobile = false;
+
   constructor(private paymentService: PaymentService) {
     this.payments = this.paymentService.getPayments();
     this.filteredPayments = [...this.payments];
