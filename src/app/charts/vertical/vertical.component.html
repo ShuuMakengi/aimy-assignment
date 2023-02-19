@@ -1,6 +1,6 @@
 <div>
-  <canvas baseChart class="chart" *ngIf="_chartData"
-          [data]="_chartData"
+  <canvas baseChart class="chart" *ngIf="chartDataHorizontal"
+          [data]="chartDataVertical"
           [options]="barChartOptions"
           [plugins]="barChartPlugins"
           [type]="barChartType"

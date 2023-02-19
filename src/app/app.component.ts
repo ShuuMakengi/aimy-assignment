@@ -66,6 +66,10 @@ export class AppComponent {
 
     this.chartOneLabels.chartLabels = Object.values(PaymentMethod);
 
+    dataByMethod.forEach((value, key) => {
+      dataByMethod.set(key, Math.floor(value));
+    })
+
     this.chartOneData = [...dataByMethod.values()];
   }
 

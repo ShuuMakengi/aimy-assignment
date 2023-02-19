@@ -32,7 +32,7 @@ export class PaymentService {
   }
 
   private static getRandomEmployee(): string {
-    const employees = ['Amy', 'Bella', 'Cecil', 'Diane', 'Esther', 'Fiona', 'Gabriel'];
+    const employees = ['Amy', 'Cecil', 'Esther', 'Gabriel'];
     const random = Math.floor(Math.random() * employees.length);
 
     return employees[random];
